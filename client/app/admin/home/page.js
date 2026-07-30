@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import styles from "./page.module.css";
 import Link from "next/link";
 
-const API = "http://localhost:5000";
+const API = `${process.env.NEXT_PUBLIC_API_URL}`;
 
 export default function AdminHome() {
     const [stats, setStats] = useState({

@@ -5,7 +5,7 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import { toast } from "react-toastify";
 
-const API = "http://localhost:5000/orders";
+const API = `${process.env.NEXT_PUBLIC_API_URL}/orders`;
 
 export default function AdminOrders() {
     const [orders, setOrders] = useState([]);
@@ -136,7 +136,7 @@ export default function AdminOrders() {
                                         {order.product_image
                                             ? <img
                                                 className={styles.productImg}
-                                                src={`http://localhost:5000/uploads/${order.product_image}`}
+                                                src={`${process.env.NEXT_PUBLIC_API_URL}/uploads/${order.product_image}`}
                                                 alt={order.product_name}
                                               />
                                             : <div className={styles.noImg}>📦</div>

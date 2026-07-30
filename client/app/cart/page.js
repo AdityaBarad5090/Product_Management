@@ -23,13 +23,13 @@ export default function CartPage() {
     }, []);
 
     const fetchCart = async (user_id) => {
-        const res = await fetch(`http://localhost:5000/cart/${user_id}`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/cart/${user_id}`);
         const data = await res.json();
         if (data.success) setCart(data.cart);
     };
 
     const removeFromCart = async (cart_id) => {
-        const res = await fetch(`http://localhost:5000/cart/${cart_id}`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/cart/${cart_id}`, {
             method: "DELETE",
         });
         const data = await res.json();
@@ -48,7 +48,7 @@ export default function CartPage() {
 
         setLoading(true);
 
-        const res = await fetch("http://localhost:5000/orders/cart", {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/orders/cart`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ user_id }),
@@ -75,7 +75,7 @@ export default function CartPage() {
 
         const user_id = localStorage.getItem("user_id");
         const res = await fetch(
-            "http://localhost:5000/stripe/create-checkout-session",
+            `${process.env.NEXT_PUBLIC_API_URL}/stripe/create-checkout-session`,
             {
                 method: "POST",
                 headers: {
@@ -113,7 +113,7 @@ export default function CartPage() {
                 {cart.map(item => (
                     <div key={item.id} className={styles.cartItem}>
                         {item.image
-                            ? <img src={`http://localhost:5000/uploads/${item.image}`} alt={item.name} />
+                            ? <img src={`${process.env.NEXT_PUBLIC_API_URL}/uploads/${item.image}`} alt={item.name} />
                             : <div className={styles.noImage}>📦</div>
                         }
                         <div className={styles.itemInfo}>
@@ -133,7 +133,7 @@ export default function CartPage() {
 
             {cart.length > 0 && (
                 <div className={styles.totalBox}>
-                    <h2>Total: ₹{total}</h2>
+                    <h2>Total: ₹{total}</h2>  
                 </div>
             )}
         </div>

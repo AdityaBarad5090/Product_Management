@@ -28,7 +28,7 @@ function ProductsSkeleton() {
         </div>
     );
 }
-const API = "http://server:5000/products";
+const API = `${process.env.NEXT_PUBLIC_API_URL}/products`;
 
 async function getProducts() {
     const res = await fetch(API, {

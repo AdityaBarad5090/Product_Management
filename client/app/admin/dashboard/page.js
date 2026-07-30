@@ -11,7 +11,7 @@ import ProductTable from "./ProductTable.js";
 import ProductModal from "./ProductModel.js";
 import Sidebar from "./Sidebar.js";
 
-const API = "http://localhost:5000/products";
+const API = `${process.env.NEXT_PUBLIC_API_URL}/products`;
 
 const initialForm = {
     name: "",
@@ -73,7 +73,7 @@ export default function AdminDashboard() {
             existing_image: product.image,
         });
         setEditingId(product.id);
-        setPreview(`http://localhost:5000/uploads/${product.image}`);
+        setPreview(`${process.env.NEXT_PUBLIC_API_URL}/uploads/${product.image}`);
         setShowModal(true);
     };
 
@@ -230,7 +230,7 @@ export default function AdminDashboard() {
             cell: row =>
                 row.image ? (
                     <Image
-                        src={`http://localhost:5000/uploads/${row.image}`}
+                        src={`${process.env.NEXT_PUBLIC_API_URL}/uploads/${row.image}`}
                         alt={row.name}
                         className={styles.productImg}
                         width={95}
@@ -324,7 +324,7 @@ export default function AdminDashboard() {
                     setActiveCategory={setActiveCategory}
                     setPage={setPage}
                 />
-
+             
                 <ProductTable
                     columns={columns}
                     products={products}

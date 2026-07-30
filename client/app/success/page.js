@@ -16,7 +16,7 @@ function SuccessContent() {
             return;
         }
 
-        fetch("http://localhost:5000/stripe/payment-success", {
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/stripe/payment-success`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

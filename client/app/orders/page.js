@@ -22,7 +22,7 @@ export default function OrdersPage() {
     }, []);
 
     const fetchOrders = async (user_id) => {
-        const res = await fetch(`http://localhost:5000/orders/${user_id}`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/orders/${user_id}`);
         const data = await res.json();
         if (data.success) {
             setOrders(data.orders);
@@ -64,7 +64,7 @@ export default function OrdersPage() {
                         {/* ── Product Image ── */}
                         <div className={styles.orderImage}>
                             {order.product_image
-                                ? <img src={`http://localhost:5000/uploads/${order.product_image}`} alt={order.product_name} />
+                                ? <img src={`${process.env.NEXT_PUBLIC_API_URL}/uploads/${order.product_image}`} alt={order.product_name} />
                                 : <div className={styles.noImage}>📦</div>
                             }
                         </div>

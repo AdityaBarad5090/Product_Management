@@ -1,6 +1,6 @@
 import ProductDetails from "./productdetails";
 
-const API = "http://server:5000/products";
+const API = `${process.env.NEXT_PUBLIC_API_URL}/products`;
 
 async function getProduct(id) {
     const res = await fetch(`${API}/${id}`, {

@@ -14,7 +14,7 @@ export default function AdminLogin() {
 
     const handleLogin = async () => {
         setError("");
-        const res = await fetch("http://localhost:5000/auth/admin-login", {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/admin-login`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email, password })
