@@ -1,0 +1,390 @@
+.page {
+    padding: 32px;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.pageHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.headerActions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+/* ---------- Search ---------- */
+
+.searchWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.searchIcon {
+    position: absolute;
+    left: 12px;
+    color: var(--muted);
+    pointer-events: none;
+    transition: color 0.2s;
+    z-index: 2;
+}
+
+.searchInput {
+    padding: 10px 16px 10px 36px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface-2);
+    color: white;
+    font-weight: 500;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.2s ease-in-out;
+    width: 200px;
+}
+
+.searchInput:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+    width: 280px;
+}
+
+.searchWrapper:focus-within .searchIcon {
+    color: var(--accent);
+}
+
+/* ---------- Stats ---------- */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.statCard {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    transition: .2s;
+}
+
+.statCard:hover {
+    border-color: var(--accent);
+}
+
+.statCard h4 {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.statCard p {
+    font-size: 34px;
+    font-weight: bold;
+}
+
+/* ---------- Layout ---------- */
+
+.layout {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+}
+
+/* ---------- Sidebar ---------- */
+
+.sidebar {
+    width: 200px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.sidebar h3 {
+    margin-bottom: 16px;
+    color: var(--muted);
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+
+.sidebar ul li {
+    padding: 12px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: .2s;
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+
+.sidebar li:hover {
+    background: var(--surface-2);
+    color: var(--accent);
+}
+
+.active {
+    background: var(--accent);
+    color: white;
+}
+
+/* ---------- Table ---------- */
+
+.tableWrapper {
+    flex: 1;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table thead {
+    background: #151515;
+}
+
+.table th {
+    padding: 16px;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.table td {
+    padding: 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+}
+
+.table tbody tr {
+    transition: .2s;
+}
+
+.table tbody tr:hover {
+    background: var(--surface-2);
+}
+
+/* ---------- Images ---------- */
+
+.productImg {
+    width: 95px;
+    height: 95px;
+    border-radius: 8px;
+    padding: 4px;
+}
+
+.noImg {
+    width: 70px;
+    height: 70px;
+    background: var(--surface-2);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ---------- Actions ---------- */
+
+.actions {
+    display: flex;
+    gap: 8px;
+}
+
+.btnEdit {
+    background: var(--accent);
+    color: white;
+    padding: 8px 14px;
+    border-radius: 8px;    
+}
+
+.btnEdit:hover {
+    background: var(--accent-hover);
+}
+
+.btnDelete {
+    background: var(--danger);
+    color: white;
+    padding: 8px 14px;
+    border-radius: 8px;
+}
+
+.btnDelete:hover {
+    background: var(--danger-hover);
+}
+
+/* ---------- Header Buttons ---------- */
+
+.btnAdd,
+.btnLogout,
+.btnHome {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+/* Add Product */
+.btnAdd {
+    background: var(--accent);
+    color: white;
+}
+
+.btnAdd:hover {
+    background: var(--accent-hover);
+}
+
+/* Home */
+.btnHome {
+    background: var(--muted);
+    color: white;
+}
+
+.btnHome:hover {
+    opacity: 0.9;
+}
+
+/* Logout */
+.btnLogout {
+    background: var(--danger);
+    color: white;
+}
+
+.btnLogout:hover {
+    background: var(--danger-hover);
+}
+/* ---------- Modal ---------- */
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.modal {
+    width: 100%;
+    max-width: 500px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.modal h2 {
+    margin-bottom: 20px;
+}
+
+.field {
+    margin-bottom: 16px;
+}
+
+.field label {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.preview {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    margin-bottom: 16px;
+}
+
+.modalActions {
+    display: flex;
+    gap: 10px;
+}
+
+.btnSave {
+    flex: 1;
+    background: var(--accent);
+    color: white;
+}
+
+.btnSave:hover {
+    background: var(--accent-hover);
+}
+
+.btnCancel {
+    flex: 1;
+    background: var(--surface-2);
+    color: white;
+    border: 1px solid var(--border);
+}
+
+.btnCancel:hover {
+    background: var(--border);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1000px) {
+    .layout {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Table background */
+.tableWrapper :global(.rdt_Table) {
+    background-color: #040404;
+}
+
+/* Header */
+.tableWrapper :global(.rdt_TableHeadRow) {
+    background-color: #000000;
+    color: #fefefe;
+}
+
+/* Rows */
+.tableWrapper :global(.rdt_TableRow) {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+/* Hover */
+.tableWrapper :global(.rdt_TableRow:hover) {
+    background-color: #222121;
+}
+
+/* Pagination */
+.tableWrapper :global(.rdt_Pagination) {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.tableWrapper :global(.rdt_selectControl) {
+    height: 35px;
+    width: 49px;
+}

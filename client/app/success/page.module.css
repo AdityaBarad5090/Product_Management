@@ -1,0 +1,93 @@
+.container{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#0f172a;
+    padding:30px;
+}
+
+.card{
+    width:500px;
+    background:#1e293b;
+    border-radius:20px;
+    padding:45px;
+    text-align:center;
+    color:#fff;
+    box-shadow:0 20px 60px rgba(0,0,0,.35);
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.icon{
+    color:#22c55e;
+    margin-bottom:20px;
+}
+
+.card h1{
+    font-size:34px;
+    margin-bottom:12px;
+}
+
+.subtitle{
+    color:#cbd5e1;
+    line-height:1.7;
+    margin-bottom:30px;
+}
+
+.infoBox{
+    background:#111827;
+    border-radius:12px;
+    padding:20px;
+    margin-bottom:35px;
+}
+
+.infoBox div{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:14px;
+}
+
+.infoBox div:last-child{
+    margin-bottom:0;
+}
+
+.infoBox span{
+    color:#94a3b8;
+}
+
+.infoBox strong{
+    color:#fff;
+}
+
+.buttons{
+    display:flex;
+    gap:15px;
+}
+
+.shopBtn,
+.orderBtn{
+    flex:1;
+    padding:14px;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:600;
+    transition:.3s;
+}
+
+.shopBtn{
+    background:#2563eb;
+    color:#fff;
+}
+
+.shopBtn:hover{
+    background:#1d4ed8;
+}
+
+.orderBtn{
+    background:#22c55e;
+    color:#fff;
+}
+
+.orderBtn:hover{
+    background:#16a34a;
+}

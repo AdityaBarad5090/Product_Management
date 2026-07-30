@@ -1,0 +1,38 @@
+version: "3.9"
+
+services:
+
+  mysql:
+    image: mysql:8.0
+    container_name: product-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: product_management
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  server:
+    build: ./server
+    container_name: product-server
+    restart: always
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mysql
+    env_file:
+      - ./server/.env
+
+  client:
+    build: ./client
+    container_name: product-client
+    restart: always
+    ports:
+      - "3000:3000"
+    depends_on:
+      - server
+
+volumes:
+  mysql_data:

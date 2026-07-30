@@ -1,0 +1,136 @@
+.page {
+    padding: 32px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.header h1 {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.btnBack {
+    padding: 10px 16px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--foreground);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.btnBack:hover {
+    background: var(--surface-2);
+}
+
+.loading {
+    text-align: center;
+    color: var(--muted);
+    margin-top: 40px;
+}
+
+.empty {
+    text-align: center;
+    color: var(--muted);
+    font-size: 16px;
+    margin-top: 60px;
+}
+
+/* ── Orders List ── */
+.ordersList {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.orderCard {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+.orderImage img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.noImage {
+    width: 80px;
+    height: 80px;
+    background: var(--surface-2);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+}
+
+.orderInfo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.orderInfo h3 {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.price {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.quantity {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.total {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.date {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* ── Status Badge ── */
+.status {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.statusPending {
+    background: #422006;
+    color: #f59e0b;
+}
+
+.statusConfirmed {
+    background: #1e3a5f;
+    color: #3b82f6;
+}
+
+.statusDelivered {
+    background: #052e16;
+    color: #10b981;
+}

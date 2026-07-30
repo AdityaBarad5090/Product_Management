@@ -1,0 +1,261 @@
+.page {
+    padding: 32px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.headerActions {
+    display: flex;
+    gap: 10px;
+}
+
+.btnBack {
+    padding: 10px 16px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--foreground);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.btnBack:hover {
+    background: var(--surface-2);
+}
+
+.btnCart {
+    padding: 10px 16px;
+    background: #4f46e5;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.btnOrders {
+    padding: 10px 16px;
+    background: #10b981;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* ── Product Detail ── */
+.detail {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+/* ── Image ── */
+.imageBox {
+    flex: 1;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+}
+
+.imageBox img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+.noImage {
+    width: 100%;
+    height: 400px;
+    background: var(--surface-2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 80px;
+}
+
+/* ── Info ── */
+.info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.category {
+    display: inline-block;
+    padding: 4px 12px;
+    background: #4f46e5;
+    color: white;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    width: fit-content;
+}
+
+.name {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.price {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.details {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* ── Quantity ── */
+.quantityBox {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.quantityBox label {
+    font-size: 14px;
+    color: var(--muted);
+    font-weight: 600;
+}
+
+.quantityControls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 4px 8px;
+}
+
+.qtyBtn {
+    background: transparent;
+    border: none;
+    color: var(--foreground);
+    font-size: 18px;
+    cursor: pointer;
+    padding: 4px 8px;
+    font-weight: 600;
+}
+
+.qtyBtn:hover {
+    color: #4f46e5;
+}
+
+.qtyValue {
+    font-size: 16px;
+    font-weight: 600;
+    min-width: 24px;
+    text-align: center;
+}
+
+.total {
+    font-size: 18px;
+    font-weight: 700;
+    color: #10b981;
+}
+
+/* ── Buttons ── */
+.btnGroup {
+    display: flex;
+    gap: 12px;
+}
+
+.btnAddCart {
+    flex: 1;
+    padding: 14px;
+    background: #4f46e5;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btnAddCart:hover {
+    background: #4338ca;
+}
+
+.btnOrder {
+    flex: 1;
+    padding: 14px;
+    background: #10b981;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btnOrder:hover {
+    background: #059669;
+}
+
+/* ── Skeleton ── */
+.skeleton {
+    display: flex;
+    gap: 40px;
+}
+
+.skeletonImage {
+    flex: 1;
+    height: 400px;
+    background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 12px;
+}
+
+.skeletonContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-top: 16px;
+}
+
+.skeletonText {
+    height: 32px;
+    background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 6px;
+}
+
+.skeletonTextShort {
+    height: 20px;
+    width: 60%;
+    background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 6px;
+}
+
+@keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+.empty {
+    text-align: center;
+    color: var(--muted);
+    margin-top: 60px;
+    font-size: 16px;
+}

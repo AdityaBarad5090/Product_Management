@@ -1,0 +1,168 @@
+.page {
+    padding: 32px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.header h1 {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.btnBack {
+    padding: 10px 16px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--foreground);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    margin-left: 340px;
+}
+
+.btnBack:hover {
+    background: var(--surface-2);
+}
+
+.empty {
+    text-align: center;
+    color: var(--muted);
+    font-size: 16px;
+    margin-top: 60px;
+}
+
+/* ── Cart Items ── */
+.cartList {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.cartItem {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+.cartItem img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.noImage {
+    width: 80px;
+    height: 80px;
+    background: var(--surface-2);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+}
+
+.itemInfo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.itemInfo h3 {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.price {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.quantity {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.subtotal {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.btnRemove {
+    padding: 8px 16px;
+    background: transparent;
+    color: #ef4444;
+    border: 1px solid #ef4444;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.btnRemove:hover {
+    background: #1f1010;
+}
+
+/* ── Total ── */
+.totalBox {
+    margin-top: 24px;
+    padding: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    text-align: right;
+}
+
+.totalBox h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.btnOrder {
+    padding: 12px 24px;
+    background: #10b981;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;  
+    margin-top: 12px;
+    width: 100%;
+}
+
+.btnOrder:hover {
+    background: #059669;
+}
+
+.btnOrder:disabled {
+    background: #888;
+    cursor: not-allowed;
+}
+
+.btnmy{
+     background: var(--success);
+    color: white;
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
