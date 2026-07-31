@@ -196,9 +196,8 @@ export const buyNowCheckout = async (req, res) => {
                         quantity,
                         type: "buy_now",
                     },
-        
-                    success_url: "http://localhost:3000/success?session_id={CHECKOUT_SESSION_ID}",
-                    cancel_url: "http://localhost:3000/cancel",
+                    success_url: `${process.env.CLIENT_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
+                    cancel_url: `${process.env.CLIENT_URL}/cancel`,
                 });
 
                 res.json({

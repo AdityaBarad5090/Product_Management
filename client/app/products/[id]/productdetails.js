@@ -144,7 +144,7 @@ export default function ProductDetail() {
                 <div className={styles.imageBox}>
                     {product.image
                         ? <img
-                            src={`http://localhost:5000/uploads/${product.image}`}
+                            src={`${process.env.NEXT_PUBLIC_API_URL}/uploads/${product.image}`}
                             alt={product.name}
                         />
                         : <div className={styles.noImage}>📦</div>
