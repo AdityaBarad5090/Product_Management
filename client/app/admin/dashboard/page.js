@@ -73,7 +73,7 @@ export default function AdminDashboard() {
             existing_image: product.image,
         });
         setEditingId(product.id);
-        setPreview(`${process.env.NEXT_PUBLIC_API_URL}/uploads/${product.image}`);
+        
         setShowModal(true);
     };
 
