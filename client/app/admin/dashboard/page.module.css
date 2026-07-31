@@ -148,6 +148,7 @@
     border-radius: 12px;
     overflow-x: auto;         /* ← add this */
     -webkit-overflow-scrolling: touch;   /* smooth scroll on iOS */
+    touch-action: pan-x;
 }
 
 .table {
