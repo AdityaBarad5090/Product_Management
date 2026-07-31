@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import Link from "next/link";
 
 export default function ProductsClient({ initialProducts }) {
-    const API = "http://localhost:5000/products";
+    const API = `${process.env.NEXT_PUBLIC_API_URL}/products`;
 
     const [products, setProducts] = useState(initialProducts);
     const [activeCategory, setActiveCategory] = useState("All");
@@ -41,7 +41,7 @@ export default function ProductsClient({ initialProducts }) {
             toast.error("Please login first!");
             return;
         }
-        const res = await fetch("http://localhost:5000/cart", {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/cart`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ user_id, product_id }),
@@ -97,7 +97,7 @@ export default function ProductsClient({ initialProducts }) {
                     {products.map((p, index) => (
                         <div key={p.id} className={styles.card} onClick={() => window.location.href = `/products/${p.id}`} style={{ cursor: "pointer" }}>
                             {p.image
-                                ? <Image src={`http://localhost:5000/uploads/${p.image}`} alt={p.name} width={300} height={160} className={styles.cardImg} style={{ width: "100%", height: "auto" }}  {...(index === 0
+                                ? <Image src={`${process.env.NEXT_PUBLIC_API_URL}/uploads/${p.image}`} alt={p.name} width={300} height={160} className={styles.cardImg} style={{ width: "100%", height: "auto" }}  {...(index === 0
                                     ? { priority: true }
                                     : { loading: "lazy" })} />
                                 : <div className={styles.noImage}>📦</div>
