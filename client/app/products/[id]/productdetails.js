@@ -25,7 +25,7 @@ export default function ProductDetail() {
     }, []);
 
     const fetchProduct = async () => {
-        const res = await fetch(`http://localhost:5000/products/${id}`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products/${id}`);
         const data = await res.json();
         if (data.success) {
             setProduct(data.product);
@@ -37,7 +37,7 @@ export default function ProductDetail() {
         const user_id = localStorage.getItem("user_id");
         if (!user_id) { alert("Please login first!"); return; }
 
-        const res = await fetch("http://localhost:5000/cart", {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/cart`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ user_id, product_id: id }),
@@ -50,7 +50,7 @@ export default function ProductDetail() {
         const user_id = localStorage.getItem("user_id");
         if (!user_id) { toast.error("Please login first!"); return; }
 
-        const res = await fetch("http://localhost:5000/orders", {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/orders`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -100,7 +100,7 @@ export default function ProductDetail() {
         }
 
         const res = await fetch(
-            "http://localhost:5000/stripe/buy-now",
+            `${process.env.NEXT_PUBLIC_API_URL}/stripe/buy-now`,
             {
                 method: "POST",
                 headers: {
