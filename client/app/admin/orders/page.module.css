@@ -85,7 +85,7 @@
 }
 
 .tabCount {
-    background: rgba(255,255,255,0.2);
+    background: rgba(255, 255, 255, 0.2);
     padding: 2px 8px;
     border-radius: 20px;
     font-size: 12px;
@@ -96,13 +96,15 @@
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 10px;
-    overflow: hidden;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .table {
     width: 100%;
     border-collapse: collapse;
     font-size: 14px;
+    min-width: 700px;
 }
 
 .table thead tr {
@@ -210,4 +212,23 @@
     color: var(--muted);
     font-size: 16px;
     margin-top: 60px;
+}
+
+@media (max-width: 600px) {
+    .tabs {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 4px;
+    }
+
+    .pageHeader {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .table th,
+    .table td {
+        padding: 10px 12px;
+    }
 }

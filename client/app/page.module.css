@@ -24,12 +24,14 @@
     font-size: 32px;
     font-weight: 700;
     margin-bottom: 8px;
+    align-items: center;
 }
 
 .subtitle {
     color: var(--muted);
     font-size: 15px;
     margin-bottom: 40px;
+    align-items: center;
 }
 
 .buttons {
@@ -73,4 +75,14 @@
     color: var(--muted);
     font-size: 12px;
     margin-top: 60px;
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 24px;
+    }
+    
+    .wrapper {
+        padding: 16px;
+    }
 }

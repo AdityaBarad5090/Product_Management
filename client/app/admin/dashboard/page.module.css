@@ -145,10 +145,13 @@
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 12px;
+    overflow-x: auto;         /* ← add this */
+    -webkit-overflow-scrolling: touch;   /* smooth scroll on iOS */
 }
 
 .table {
     width: 100%;
+    min-width: 700px;
     border-collapse: collapse;
 }
 
@@ -387,4 +390,29 @@
 .tableWrapper :global(.rdt_selectControl) {
     height: 35px;
     width: 49px;
+}
+
+@media (max-width: 1000px) {
+    .layout {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .table th,
+    .table td {
+        padding: 12px 10px;
+        font-size: 13px;
+    }
+
+    .productImg {
+        width: 60px;
+        height: 60px;
+    }
 }
