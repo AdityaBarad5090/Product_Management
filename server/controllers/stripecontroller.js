@@ -143,80 +143,78 @@ export const paymentSuccess = async (req, res) => {
 
 export const buyNowCheckout = async (req, res) => {
     try {
-
         const { user_id, product_id, quantity } = req.body;
 
         db.query(
             "SELECT * FROM products WHERE id = ?",
             [product_id],
             async (err, result) => {
+                try {
+                    if (err) {
+                        console.error("DB Error in buyNowCheckout:", err);
+                        return res.status(500).json({
+                            success: false,
+                            message: "Database Error",
+                        });
+                    }
 
-                if (err) {
-                    return res.status(500).json({
-                        success: false,
-                        message: "Database Error",
-                    });
-                }
+                    if (result.length === 0) {
+                        return res.status(404).json({
+                            success: false,
+                            message: "Product not found",
+                        });
+                    }
 
-                if (result.length === 0) {
-                    return res.status(404).json({
-                        success: false,
-                        message: "Product not found",
-                    });
-                }
+                    const product = result[0];
 
-                const product = result[0];
-
-                const session = await stripe.checkout.sessions.create({
-
-                    payment_method_types: ["card"],
-
-                    line_items: [
-                        {
-                            price_data: {
-                                currency: "inr",
-
-                                product_data: {
-                                    name: product.name,
-                                    description: product.details,
+                    const session = await stripe.checkout.sessions.create({
+                        payment_method_types: ["card"],
+                        line_items: [
+                            {
+                                price_data: {
+                                    currency: "inr",
+                                    product_data: {
+                                        name: product.name,
+                                        description: product.details,
+                                    },
+                                    unit_amount: product.price * 100,
                                 },
-
-                                unit_amount: product.price * 100,
+                                quantity,
                             },
-
+                        ],
+                        mode: "payment",
+                        metadata: {
+                            user_id,
+                            product_id,
                             quantity,
+                            type: "buy_now",
                         },
-                    ],
+                        success_url: `${process.env.CLIENT_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
+                        cancel_url: `${process.env.CLIENT_URL}/cancel`,
+                    });
 
-                    mode: "payment",
+                    res.json({
+                        success: true,
+                        url: session.url,
+                    });
 
-                    metadata: {
-                        user_id,
-                        product_id,
-                        quantity,
-                        type: "buy_now",
-                    },
-                    success_url: `${process.env.CLIENT_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
-                    cancel_url: `${process.env.CLIENT_URL}/cancel`,
-                });
-
-                res.json({
-                    success: true,
-                    url: session.url,
-                });
+                } catch (innerError) {
+                    console.error("Stripe session error:", innerError);
+                    res.status(500).json({
+                        success: false,
+                        message: innerError.message,
+                    });
+                }
             }
         );
-
     } catch (error) {
-
+        console.error("buyNowCheckout error:", error);
         res.status(500).json({
             success: false,
             message: error.message,
         });
-
     }
 };
-
 export const stripeWebhook = async (req, res) => {
     console.log("✅ Webhook received");
 
