@@ -15,7 +15,7 @@ export default function ProductsClient({ initialProducts }) {
     const [search, setSearch] = useState("");
     const { categories } = useCategories();
     const [page, setPage] = useState(1);
-    const [perPage] = useState(10);
+    const [perPage] = useState(12);
     const [totalPages, setTotalPages] = useState(1);
 
     useEffect(() => {
