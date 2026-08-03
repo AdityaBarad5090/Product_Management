@@ -55,6 +55,18 @@
     background: var(--accent-hover);
 }
 
+.btnSecondary {
+    padding: 12px 32px;
+    font-size: 15px;
+    font-weight: 600;
+    background: var(--surface-2);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
 .btnGhost {
     padding: 12px 32px;
     font-size: 15px;
