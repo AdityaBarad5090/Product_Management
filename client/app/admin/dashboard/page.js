@@ -119,9 +119,10 @@ export default function AdminDashboard() {
 
     const handleDelete = async (id) => {
         if (!confirm("Delete this product?")) return;
-        await fetch(`${API}/${id}`, { method: "DELETE" });
+        await fetch(`${API}/${id}`, { method: "DELETE" , headers: {Authorization: `Bearer ${localStorage.getItem("token")}`}});
         getProducts();
     };
+
     const exportCSV = () => {
 
         if (products.length === 0) {
