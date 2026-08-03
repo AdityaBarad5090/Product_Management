@@ -97,7 +97,7 @@ export default function ProductsClient({ initialProducts }) {
                     {products.map((p, index) => (
                         <div key={p.id} className={styles.card} onClick={() => window.location.href = `/products/${p.id}`} style={{ cursor: "pointer" }}>
                             {p.image
-                                ? <Image src={`${process.env.NEXT_PUBLIC_API_URL}/uploads/${p.image}`} alt={p.name} width={300} height={160} className={styles.cardImg} style={{ width: "100%", height: "auto" }}  {...(index === 0
+                                ? <Image src={`${process.env.NEXT_PUBLIC_API_URL}/uploads/${p.image}`} alt={p.name} width={300} height={160} className={styles.cardImg}  {...(index === 0
                                     ? { priority: true }
                                     : { loading: "lazy" })} />
                                 : <div className={styles.noImage}>📦</div>
