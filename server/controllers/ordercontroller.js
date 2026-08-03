@@ -82,9 +82,9 @@ export const placeOrderFromCart = (req, res) => {
                         (err) => {
                             if (err) return res.json({ success: false, error: err });
                             res.json({ success: true, message: "Order placed from cart!" });
-                        }
+                        }    
                     );
-                }
+                }             
             );
         }
     );
@@ -149,7 +149,7 @@ export const updateOrderStatus = (req, res) => {
                         })
                         .catch((err) => {
                             console.log(err);
-                        });
+                        });                                                 
                 }
             );
         }
