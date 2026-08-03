@@ -10,29 +10,47 @@ export default function AdminLogin() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
     const router = useRouter();
 
     const handleLogin = async () => {
         setError("");
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/admin-login`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email, password })
-        });
-        const data = await res.json();
 
-        if(!email || !password){
+        if (!email || !password) {
             toast.warning("Please Enter Email And Password");
-        }else if (!data.success) {
-            toast.error(data.message);
             return;
-        }else{
-            toast.success("Admin Login Successfully");
-            localStorage.setItem("role", "admin");
-            localStorage.setItem("token",data.token);
-            router.push("/admin/home");
         }
 
+        setLoading(true);
+
+        try {
+            const res = await fetch(
+                `${process.env.NEXT_PUBLIC_API_URL}/auth/admin-login`,
+                {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email, password }),
+                }
+            );
+
+            const data = await res.json();
+
+            if (!data.success) {
+                toast.error(data.message);
+                return;
+            }
+
+            toast.success("Admin Login Successfully");
+
+            localStorage.setItem("role", "admin");
+            localStorage.setItem("token", data.token);
+
+            router.push("/admin/home");
+        } catch (error) {
+            toast.error("Something went wrong. Please try again.");
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -61,7 +79,13 @@ export default function AdminLogin() {
                     </div>
                 </div>
 
-                <button className={styles.btn} onClick={handleLogin}>Login</button>
+                <button
+                    className={styles.btn}
+                    onClick={handleLogin}
+                    disabled={loading}
+                >
+                    {loading ? "Logging in..." : "Login"}
+                </button>
 
                 <p className={styles.footer}>
                     <Link href="/">Back To Home Page</Link>

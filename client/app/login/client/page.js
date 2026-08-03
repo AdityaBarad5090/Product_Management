@@ -10,31 +10,48 @@ export default function ClientLogin() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
     const router = useRouter();
 
     const handleLogin = async () => {
         setError("");
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/client-login`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email, password })
-        });
-        const data = await res.json();
 
-        if(!email || !password){
-            toast.warning("Please Enter Emial And Password");
-        }
-        else if (!data.success) {
-            toast.error(data.message);
+        if (!email || !password) {
+            toast.warning("Please enter email and password");
             return;
-        }else{
-            toast.success("User Login Successfully");
-            localStorage.setItem("role", "client");
-            localStorage.setItem("token", data.token);        // ← token ✅
-            localStorage.setItem("user_id", data.user.id);    // ← user.id not user_id ✅
-            router.push("/products");
         }
 
+        setLoading(true);
+
+        try {
+            const res = await fetch(
+                `${process.env.NEXT_PUBLIC_API_URL}/auth/client-login`,
+                {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email, password }),
+                }
+            );
+
+            const data = await res.json();
+
+            if (!data.success) {
+                toast.error(data.message);
+                return;
+            }
+
+            toast.success("User Login Successfully");
+
+            localStorage.setItem("role", "client");
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("user_id", data.user.id);
+
+            router.push("/products");
+        } catch (error) {
+            toast.error("Something went wrong. Please try again.");
+        } finally {
+            setLoading(false);
+        }
     };
     return (
         <div className={styles.wrapper}>
@@ -62,8 +79,14 @@ export default function ClientLogin() {
                     </div>
                 </div>
 
-                <button className={styles.btn} onClick={handleLogin}>Login</button>
-
+                <button
+                    className={styles.btn}
+                    onClick={handleLogin}
+                    disabled={loading}
+                >
+                    {loading ? "Logging in..." : "Login"}
+                </button>
+                
                 <p className={styles.footer}>
                     Don't have an account?{" "}
                     <Link href="/register">Register</Link>
