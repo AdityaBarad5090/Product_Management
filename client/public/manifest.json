@@ -1,11 +1,11 @@
 {
-  "name": "Your Product Store",
-  "short_name": "ProductApp",
-  "description": "Order products easily from your phone",
+  "name": "Product Management System",
+  "short_name": "Product Management",
+  "description": "Manage and order products online",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#000000",
-  "theme_color": "#4f46e5",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
   "orientation": "portrait",
   "icons": [
     {
