@@ -1,17 +1,22 @@
-import transporter from "../config/mail.js";
+import resend from "../config/mail.js";
 
 const sendEmail = async ({ to, subject, html }) => {
     try {
-        await transporter.sendMail({
-            from: `"Product Management" <${process.env.MAIL_USER}>`,
+        const { data, error } = await resend.emails.send({
+            from: "onboarding@resend.dev",  // switch to your verified domain later
             to,
             subject,
             html,
         });
 
-        console.log("✅ Email sent successfully");
-    } catch (error) {
-        console.log("❌ Email Error:", error.message);
+        if (error) {
+            console.error("❌ Email Error:", error);
+            return;
+        }
+
+        console.log("✅ Email sent:", data);
+    } catch (err) {
+        console.error("❌ Email Error:", err.message);
     }
 };
 
