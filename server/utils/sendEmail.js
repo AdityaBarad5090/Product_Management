@@ -1,20 +1,16 @@
-import resend from "../config/mail.js";
+import apiInstance from "../config/mail.js";
+import brevo from "@getbrevo/brevo";
 
 const sendEmail = async ({ to, subject, html }) => {
     try {
-        const { data, error } = await resend.emails.send({
-            from: "onboarding@resend.dev",  // switch to your verified domain later
-            to,
-            subject,
-            html,
-        });
+        const email = new brevo.SendSmtpEmail();
+        email.sender = { email: "hostelnamagement@gmail.com", name: "Product Management" };
+        email.to = [{ email: to }];
+        email.subject = subject;
+        email.htmlContent = html;
 
-        if (error) {
-            console.error("❌ Email Error:", error);
-            return;
-        }
-
-        console.log("✅ Email sent:", data);
+        const response = await apiInstance.sendTransacEmail(email);
+        console.log("✅ Email sent:", response.body);
     } catch (err) {
         console.error("❌ Email Error:", err.message);
     }
