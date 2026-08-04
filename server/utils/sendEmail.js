@@ -1,16 +1,14 @@
-import apiInstance from "../config/mail.js";
-import * as brevo from "@getbrevo/brevo";
+import transporter from "../config/mail.js";
 
 const sendEmail = async ({ to, subject, html }) => {
     try {
-        const email = new brevo.SendSmtpEmail();
-        email.sender = { email: "hostelnamagement@gmail.com", name: "Product Management" };
-        email.to = [{ email: to }];
-        email.subject = subject;
-        email.htmlContent = html;
-
-        const response = await apiInstance.sendTransacEmail(email);
-        console.log("✅ Email sent:", response.body);
+        const info = await transporter.sendMail({
+            from: `"Product Management" <hostelnamagement@gmail.com>`,
+            to,
+            subject,
+            html,
+        });
+        console.log("✅ Email sent:", info.messageId);
     } catch (err) {
         console.error("❌ Email Error:", err.message);
     }
