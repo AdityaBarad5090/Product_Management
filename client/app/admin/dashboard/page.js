@@ -73,7 +73,7 @@ export default function AdminDashboard() {
             existing_image: product.image,
         });
         setEditingId(product.id);
-        
+
         setShowModal(true);
     };
 
@@ -81,7 +81,7 @@ export default function AdminDashboard() {
         const file = e.target.files[0];
         if (!file) return;
         setForm({ ...form, image: file });
-       
+
     };
 
     const handleSave = async () => {
@@ -119,7 +119,7 @@ export default function AdminDashboard() {
 
     const handleDelete = async (id) => {
         if (!confirm("Delete this product?")) return;
-        await fetch(`${API}/${id}`, { method: "DELETE" , headers: {Authorization: `Bearer ${localStorage.getItem("token")}`}});
+        await fetch(`${API}/${id}`, { method: "DELETE", headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } });
         getProducts();
     };
 
@@ -231,7 +231,7 @@ export default function AdminDashboard() {
             cell: row =>
                 row.image ? (
                     <Image
-                        src={`${process.env.NEXT_PUBLIC_API_URL}/uploads/${row.image}`}
+                        src={row.image}
                         alt={row.name}
                         className={styles.productImg}
                         width={95}
@@ -315,7 +315,7 @@ export default function AdminDashboard() {
                         localStorage.removeItem("token");
                     }}>Logout</Link>
                 </div>
-            </div>  
+            </div>
 
             <div className={styles.layout}>
 
@@ -325,7 +325,7 @@ export default function AdminDashboard() {
                     setActiveCategory={setActiveCategory}
                     setPage={setPage}
                 />
-             
+
                 <ProductTable
                     columns={columns}
                     products={products}

@@ -133,14 +133,15 @@ export default function AdminOrders() {
                                 <tr key={order.id}>
                                     <td>#{order.id}</td>
                                     <td>
-                                        {order.product_image
-                                            ? <img
+                                        {order.product_image ? (
+                                            <img
                                                 className={styles.productImg}
-                                                src={`${process.env.NEXT_PUBLIC_API_URL}/uploads/${order.product_image}`}
+                                                src={order.product_image}
                                                 alt={order.product_name}
-                                              />
-                                            : <div className={styles.noImg}>📦</div>
-                                        }
+                                            />
+                                        ) : (
+                                            <div className={styles.noImg}>📦</div>
+                                        )}
                                     </td>
                                     <td>{order.product_name}</td>
                                     <td>

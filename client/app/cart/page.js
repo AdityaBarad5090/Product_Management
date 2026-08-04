@@ -59,8 +59,8 @@ export default function CartPage() {
 
         if (data.success) {
             alert("Order placed successfully! ✅");
-            setCart([]);  
-            window.location.href = "/orders";  
+            setCart([]);
+            window.location.href = "/orders";
         } else {
             alert(data.message || "Something went wrong!");
         }
@@ -81,10 +81,10 @@ export default function CartPage() {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ cart,user_id }),
+                body: JSON.stringify({ cart, user_id }),
             }
         );
-   
+
         const data = await res.json();
 
         if (data.success) {
@@ -113,7 +113,10 @@ export default function CartPage() {
                 {cart.map(item => (
                     <div key={item.id} className={styles.cartItem}>
                         {item.image
-                            ? <img src={`${process.env.NEXT_PUBLIC_API_URL}/uploads/${item.image}`} alt={item.name} />
+                            ? <img
+                                src={item.image}
+                                alt={item.name}
+                            />
                             : <div className={styles.noImage}>📦</div>
                         }
                         <div className={styles.itemInfo}>
@@ -124,7 +127,7 @@ export default function CartPage() {
                                 Subtotal: ₹{item.price * item.quantity}
                             </p>
                         </div>
-                        <button className={styles.btnRemove} onClick={() => removeFromCart(item.id)}>  
+                        <button className={styles.btnRemove} onClick={() => removeFromCart(item.id)}>
                             Remove
                         </button>
                     </div>
@@ -133,7 +136,7 @@ export default function CartPage() {
 
             {cart.length > 0 && (
                 <div className={styles.totalBox}>
-                    <h2>Total: ₹{total}</h2>  
+                    <h2>Total: ₹{total}</h2>
                 </div>
             )}
         </div>

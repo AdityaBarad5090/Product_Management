@@ -64,7 +64,10 @@ export default function OrdersPage() {
                         {/* ── Product Image ── */}
                         <div className={styles.orderImage}>
                             {order.product_image
-                                ? <img src={`${process.env.NEXT_PUBLIC_API_URL}/uploads/${order.product_image}`} alt={order.product_name} />
+                                ? <img
+                                    src={order.product_image}
+                                    alt={order.product_name}
+                                />
                                 : <div className={styles.noImage}>📦</div>
                             }
                         </div>
