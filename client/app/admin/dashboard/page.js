@@ -81,7 +81,7 @@ export default function AdminDashboard() {
         const file = e.target.files[0];
         if (!file) return;
         setForm({ ...form, image: file });
-        setPreview(URL.createObjectURL(file));
+       
     };
 
     const handleSave = async () => {
