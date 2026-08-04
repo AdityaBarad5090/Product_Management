@@ -1,5 +1,5 @@
 import apiInstance from "../config/mail.js";
-import brevo from "@getbrevo/brevo";
+import * as brevo from "@getbrevo/brevo";
 
 const sendEmail = async ({ to, subject, html }) => {
     try {
