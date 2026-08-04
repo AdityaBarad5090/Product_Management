@@ -74,7 +74,7 @@ export const getProductById = (req, res) => {
 
 export const createProduct = (req, res) => {
     const { name, price, details, category } = req.body;
-    const image = req.file ? req.file.filename : null;
+    const image = req.file ? req.file.path : null;
 
     db.query(
         "INSERT INTO products (name, price, details, category, image) VALUES (?, ?, ?, ?, ?)",
@@ -88,7 +88,7 @@ export const createProduct = (req, res) => {
 
 export const updateProduct = (req, res) => {
     const { name, price, details, category } = req.body;
-    const image = req.file ? req.file.filename : req.body.existing_image;
+    const image = req.file ? req.file.path : req.body.existing_image;
 
     db.query(
         "UPDATE products SET name=?, price=?, details=?, category=?, image=?, updated_at=NOW() WHERE id=?",

@@ -68,6 +68,7 @@ export default function ProductsClient({ initialProducts }) {
                     >
                         ✕
                     </button>
+
                 )}
             </div>
 
@@ -97,9 +98,14 @@ export default function ProductsClient({ initialProducts }) {
                     {products.map((p, index) => (
                         <div key={p.id} className={styles.card} onClick={() => window.location.href = `/products/${p.id}`} style={{ cursor: "pointer" }}>
                             {p.image
-                                ? <Image src={`${process.env.NEXT_PUBLIC_API_URL}/uploads/${p.image}`} alt={p.name} width={300} height={160} className={styles.cardImg}  {...(index === 0
-                                    ? { priority: true }
-                                    : { loading: "lazy" })} />
+                                ? <Image
+                                    src={p.image.startsWith("http") ? p.image : `${process.env.NEXT_PUBLIC_API_URL}/uploads/${p.image}`}
+                                    alt={p.name}
+                                    width={300}
+                                    height={160}
+                                    className={styles.cardImg}
+                                    {...(index === 0 ? { priority: true } : { loading: "lazy" })}
+                                />
                                 : <div className={styles.noImage}>📦</div>
                             }
                             <div className={styles.cardBody}>
