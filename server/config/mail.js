@@ -8,6 +8,10 @@ const transporter = nodemailer.createTransport({
         user: process.env.BREVO_SMTP_LOGIN,
         pass: process.env.BREVO_SMTP_KEY,
     },
+    family: 4,                  // ← force IPv4, same fix as before
+    connectionTimeout: 20000,   // give it more time
+    greetingTimeout: 20000,
+    socketTimeout: 20000,
 });
 
 export default transporter;
